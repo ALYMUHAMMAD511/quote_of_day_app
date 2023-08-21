@@ -29,7 +29,17 @@ class _HomeScreenState extends State<HomeScreen> {
     'Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time. – Thomas A. Edison',
   ];
 
+  List <String> images =
+  [
+    'https://img.freepik.com/free-photo/vertical-shot-tree-with-dark-cloud_181624-3109.jpg?w=740&t=st=1692651747~exp=1692652347~hmac=422df3740ecbfb028f6f6f944d03b172fa055f8c875f4b7a5e571aba01cac154',
+    'https://img.freepik.com/free-photo/tree-with-starry-night-sky_23-2148282334.jpg?w=360&t=st=1692654061~exp=1692654661~hmac=11864a374fb234719576f4722b7d70da6483b02982356871975cda38cb4004eb',
+    'https://img.freepik.com/free-photo/breathtaking-shot-sea-dark-purple-sky-filled-with-stars_181624-23013.jpg?w=1060&t=st=1692654113~exp=1692654713~hmac=37b07474b1fe6cd69fe166e920ae88b3155d18d08887d57f1b3840c20903f356',
+    'https://img.freepik.com/free-photo/beautiful-picture-cloudy-sunset-cliffs-sea-malta_181624-18354.jpg?t=st=1692651747~exp=1692652347~hmac=fc40f78f6d92213cbeab32258c3f7a4650d1a4dc0593a6812535a9d6cdf81428',
+    'https://img.freepik.com/free-photo/low-angle-shot-mesmerizing-starry-sky_181624-27925.jpg?t=st=1692620249~exp=1692620849~hmac=b9b600973538c9d89af558ff55abcc040461e85a4a26869590b6ef912bd904a2',
+  ];
+
   String currentQuote = '';
+  String currentImage = '';
   List<String> favoriteQuotes = [];
 
 
@@ -43,8 +53,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void showRandomQuote() {
     final random = Random();
     final randomIndex = random.nextInt(quotes.length);
+    final randomImage = random.nextInt(images.length);
     setState(() {
       currentQuote = quotes[randomIndex];
+      currentImage = images[randomImage];
     });
   }
 
@@ -129,9 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
               //   end: Alignment.bottomRight,
               // ),
 
-              image: const DecorationImage(
-                image: NetworkImage(
-                    'https://img.freepik.com/free-photo/vertical-shot-tree-with-dark-cloud_181624-3109.jpg?w=740&t=st=1692651747~exp=1692652347~hmac=422df3740ecbfb028f6f6f944d03b172fa055f8c875f4b7a5e571aba01cac154'),
+              image: DecorationImage(
+                image: NetworkImage(currentImage),
                 fit: BoxFit.cover,
                 opacity: 0.94,
               ),
@@ -178,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       icon: const Icon(
                         Icons.share,
-                        size: 35.0,
+                        size: 40.0,
                         color: Colors.white,
                         shadows: <Shadow>
                         [
@@ -196,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: Icon(
                         isFavorite ? Icons.favorite : Icons.favorite_border,
-                        size: 35.0,
+                        size: 40.0,
                         shadows: const <Shadow>
                         [
                           Shadow(
