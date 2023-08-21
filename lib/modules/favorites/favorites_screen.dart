@@ -35,7 +35,6 @@ class _FavoritesScreenState extends State<FavoritesScreen>
   void initState()
   {
     super.initState();
-    currentQuote = quotes[9];
     loadFavoriteQuotes();
   }
 
