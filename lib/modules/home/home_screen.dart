@@ -14,8 +14,7 @@ class HomeScreen extends StatefulWidget
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-{
+class _HomeScreenState extends State<HomeScreen> {
   List<String> quotes =
   [
     'All our dreams can come true; if we have the courage to pursue them. – Walt Disney',
@@ -35,19 +34,16 @@ class _HomeScreenState extends State<HomeScreen>
 
 
   @override
-  void initState()
-  {
+  void initState() {
     super.initState();
     showRandomQuote();
     loadFavoriteQuotes();
   }
 
-  void showRandomQuote()
-  {
+  void showRandomQuote() {
     final random = Random();
     final randomIndex = random.nextInt(quotes.length);
-    setState(()
-    {
+    setState(() {
       currentQuote = quotes[randomIndex];
     });
   }
@@ -55,32 +51,28 @@ class _HomeScreenState extends State<HomeScreen>
   void loadFavoriteQuotes() async
   {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    setState(()
-    {
+    setState(() {
       favoriteQuotes = sharedPreferences.getStringList('favoriteQuotes') ?? [];
     });
   }
 
   void toggleFavorite() async
   {
-    if (favoriteQuotes.contains(currentQuote))
-    {
+    if (favoriteQuotes.contains(currentQuote)) {
       favoriteQuotes.remove(currentQuote);
     }
-    else
-    {
+    else {
       favoriteQuotes.add(currentQuote);
     }
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setStringList('favoriteQuotes', favoriteQuotes);
 
-    setState((){});
+    setState(() {});
   }
 
   @override
-  Widget build(BuildContext context)
-  {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -100,11 +92,11 @@ class _HomeScreenState extends State<HomeScreen>
               color: Colors.red,
               size: 30.0,
             ),
-            onPressed: ()
-            {
+            onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const FavoritesScreen()),
+                MaterialPageRoute(
+                    builder: (context) => const FavoritesScreen()),
               );
             },
           ),
@@ -116,93 +108,136 @@ class _HomeScreenState extends State<HomeScreen>
     );
   }
 
-  Widget quotesCard()
-  {
+  Widget quotesCard() {
     bool isFavorite = favoriteQuotes.contains(currentQuote);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-          child: Card(
-            child: Container(
-              height:392.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                gradient: const LinearGradient(
-                  colors:
-                  [
-                    Colors.redAccent,
-                    Colors.blueAccent
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-              ),
-              child: Column(
-                children:
-                [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10.0,
-                      right: 10.0,
-                      top: 50.0,
-                    ),
-                    child: Text(
-                      currentQuote,
-                      style: GoogleFonts.poppins(
-                        textStyle: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 25.0,
-                        ),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        onPressed: ()
-                        {
-                          Share.share(currentQuote);
-                          },
-                        icon: const Icon(
-                          Icons.share,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10.0,
-                    ),
-                      IconButton(
-                        icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
-                        color: isFavorite ? Colors.red : Colors.white,
-                        onPressed: toggleFavorite,
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 300.0,
-                    ),
-                    child: IconButton(
-                      onPressed: ()
-                      {
-                        showRandomQuote();
-                        },
-                      icon: const Icon(
-                        Icons.refresh,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
+        child: Card(
+          elevation: 10.0,
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+
+              // gradient: const LinearGradient(
+              //   colors:
+              //   [
+              //     Colors.redAccent,
+              //     Colors.blueAccent
+              //   ],
+              //   begin: Alignment.topLeft,
+              //   end: Alignment.bottomRight,
+              // ),
+
+              image: const DecorationImage(
+                image: NetworkImage(
+                    'https://img.freepik.com/free-photo/vertical-shot-tree-with-dark-cloud_181624-3109.jpg?w=740&t=st=1692651747~exp=1692652347~hmac=422df3740ecbfb028f6f6f944d03b172fa055f8c875f4b7a5e571aba01cac154'),
+                fit: BoxFit.cover,
+                opacity: 0.94,
               ),
             ),
+            child: Column(
+              children:
+              [
+                const SizedBox(
+                  height: 250.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 10.0,
+                    right: 10.0,
+                  ),
+                  child: Text(
+                    currentQuote,
+                    style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 30.0,
+                        shadows: <Shadow>
+                        [
+                          Shadow(
+                            offset: Offset(3.0, 3.0),
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        Share.share(currentQuote);
+                      },
+                      icon: const Icon(
+                        Icons.share,
+                        size: 35.0,
+                        color: Colors.white,
+                        shadows: <Shadow>
+                        [
+                          Shadow(
+                            offset: Offset(3.0, 3.0),
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        size: 35.0,
+                        shadows: const <Shadow>
+                        [
+                          Shadow(
+                            offset: Offset(3.0, 3.0),
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                      color: isFavorite ? Colors.red : Colors.white,
+                      onPressed: toggleFavorite,
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 300.0,
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      showRandomQuote();
+                    },
+                    icon: const Icon(
+                      Icons.refresh,
+                      color: Colors.white,
+                      size: 30.0,
+                      shadows: <Shadow>
+                      [
+                        Shadow(
+                          offset: Offset(3.0, 3.0),
+                          blurRadius: 10.0,
+                          color: Colors.black,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
+        ),
       ),
     );
   }

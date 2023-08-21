@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -35,7 +37,18 @@ class _FavoritesScreenState extends State<FavoritesScreen>
   void initState()
   {
     super.initState();
+    showRandomQuote();
     loadFavoriteQuotes();
+  }
+
+  void showRandomQuote()
+  {
+    final random = Random();
+    final randomIndex = random.nextInt(quotes.length);
+    setState(()
+    {
+      currentQuote = quotes[randomIndex];
+    });
   }
 
   void loadFavoriteQuotes() async
