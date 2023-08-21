@@ -194,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen>
                         showRandomQuote();
                         },
                       icon: const Icon(
-                        Icons.refresh,
+                        Icons.refres,
                         color: Colors.white,
                       ),
                     ),
