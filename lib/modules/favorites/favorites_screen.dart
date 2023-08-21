@@ -108,14 +108,10 @@ class _FavoritesScreenState extends State<FavoritesScreen>
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
-            gradient: const LinearGradient(
-              colors:
-              [
-                Colors.redAccent,
-                Colors.blueAccent
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+            image: DecorationImage(
+              image: NetworkImage(currentImage),
+              fit: BoxFit.cover,
+              opacity: 0.94,
             ),
           ),
           child: Column(
