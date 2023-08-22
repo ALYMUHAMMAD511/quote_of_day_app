@@ -70,10 +70,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void toggleFavorite() async
   {
-    if (favoriteQuotes.contains(currentQuote)) {
+    if (favoriteQuotes.contains(currentQuote))
+    {
       favoriteQuotes.remove(currentQuote);
     }
-    else {
+    else
+    {
       favoriteQuotes.add(currentQuote);
     }
 
@@ -137,40 +139,61 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children:
               [
-                const SizedBox(
-                  height: 250.0,
-                ),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 10.0,
                     right: 10.0,
                   ),
-                  child: Text(
-                    currentQuote,
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 30.0,
-                        shadows: <Shadow>
-                        [
-                          Shadow(
-                            offset: Offset(3.0, 3.0),
-                            blurRadius: 10.0,
-                            color: Colors.black,
-                          ),
-                        ],
+                  child: SizedBox(
+                    height: 295.0,
+                    child: Text(
+                      currentQuote,
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 26.0,
+                          shadows: <Shadow>
+                          [
+                            Shadow(
+                              offset: Offset(3.0, 3.0),
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                            ),
+                          ],
+                        ),
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
                 const SizedBox(
                   height: 10.0,
                 ),
+          IconButton(
+            onPressed: ()
+            {
+              showRandomQuote();
+              },
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.white,
+              size: 40.0,
+              shadows: <Shadow>
+              [
+                Shadow(
+                  offset: Offset(3.0, 3.0),
+                  blurRadius: 10.0,
+                  color: Colors.black,
+                ),
+              ],
+            ),
+          ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     IconButton(
                       onPressed: () {
@@ -210,29 +233,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: toggleFavorite,
                     ),
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 300.0,
-                  ),
-                  child: IconButton(
-                    onPressed: () {
-                      showRandomQuote();
-                    },
-                    icon: const Icon(
-                      Icons.refresh,
-                      color: Colors.white,
-                      size: 30.0,
-                      shadows: <Shadow>
-                      [
-                        Shadow(
-                          offset: Offset(3.0, 3.0),
-                          blurRadius: 10.0,
-                          color: Colors.black,
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
               ],
             ),

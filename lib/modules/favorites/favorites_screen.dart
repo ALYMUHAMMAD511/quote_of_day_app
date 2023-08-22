@@ -115,23 +115,27 @@ class _FavoritesScreenState extends State<FavoritesScreen>
             ),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children:
             [
               Padding(
                 padding: const EdgeInsets.only(
                   left: 10.0,
                   right: 10.0,
-                  top: 35.0,
                 ),
-                  child: Text(
-                    favoriteQuotes[index],
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.0,
+                  child: SizedBox(
+                    height: 235.0,
+                    child: Text(
+                      favoriteQuotes[index],
+                      style: GoogleFonts.poppins(
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 25.0,
+                        ),
                       ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
               ),
               const SizedBox(
