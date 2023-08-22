@@ -104,7 +104,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
       padding: const EdgeInsets.all(10.0),
       child: Card(
         child: Container(
-          height:330.0,
+          height:310.0,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
