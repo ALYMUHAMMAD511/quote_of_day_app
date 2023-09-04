@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -79,7 +78,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
           'Favorites',
           style: GoogleFonts.poppins(
             textStyle: const TextStyle(
-              fontSize: 25.0,
+              fontSize: 28.0,
               fontWeight: FontWeight.w500,
               color: Colors.white
             ),
@@ -104,7 +103,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
       padding: const EdgeInsets.all(10.0),
       child: Card(
         child: Container(
-          height:310.0,
+          height:330.0,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10.0),
@@ -125,13 +124,13 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                   right: 10.0,
                 ),
                   child: SizedBox(
-                    height: 235.0,
+                    height: 255.0,
                     child: Text(
                       favoriteQuotes[index],
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                           color: Colors.white,
-                          fontSize: 25.0,
+                          fontSize: 30.0,
                         ),
                       ),
                       textAlign: TextAlign.center,
@@ -153,6 +152,7 @@ class _FavoritesScreenState extends State<FavoritesScreen>
                     icon: const Icon(
                       Icons.share,
                       color: Colors.white,
+                      size: 30.0,
                     ),
                   ),
                 ],
