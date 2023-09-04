@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'Quote of the Day',
           style: GoogleFonts.poppins(
             textStyle: const TextStyle(
-              fontSize: 25.0,
+              fontSize: 29.0,
               fontWeight: FontWeight.w500,
               color: Colors.white,
             ),
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(
               Icons.favorite,
               color: Colors.red,
-              size: 30.0,
+              size: 40.0,
             ),
             onPressed: () {
               Navigator.push(
@@ -126,7 +126,12 @@ class _HomeScreenState extends State<HomeScreen> {
     bool isFavorite = favoriteQuotes.contains(currentQuote);
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.only(
+          left: 20.0,
+          right: 20.0,
+          top: 100.0,
+          bottom: 100.0,
+        ),
         child: Card(
           elevation: 10.0,
           child: Container(
@@ -135,27 +140,26 @@ class _HomeScreenState extends State<HomeScreen> {
               image: DecorationImage(
                 image: NetworkImage(currentImage),
                 fit: BoxFit.cover,
-                opacity: 0.94,
+                opacity: 0.92,
               ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children:
               [
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 10.0,
-                    right: 10.0,
+                    left: 15.0,
+                    right: 15.0,
                   ),
                   child: SizedBox(
-                    height: 295.0,
+                    height: 390.0,
                     child: Text(
                       currentQuote,
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                           color: Colors.white,
-                          fontSize: 26.0,
+                          fontSize: 35.0,
                           shadows: <Shadow>
                           [
                             Shadow(
@@ -171,32 +175,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 10.0,
+                  height: 25.0,
                 ),
-          IconButton(
-            onPressed: ()
-            {
-              showRandomQuote();
-              },
-            icon: const Icon(
-              Icons.refresh,
-              color: Colors.white,
-              size: 40.0,
-              shadows: <Shadow>
-              [
-                Shadow(
-                  offset: Offset(3.0, 3.0),
-                  blurRadius: 10.0,
-                  color: Colors.black,
-                ),
-              ],
-            ),
-          ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:
+                  [
                     IconButton(
-                      onPressed: () {
+                      onPressed: ()
+                      {
                         Share.share(currentQuote);
                       },
                       icon: const Icon(
@@ -214,7 +201,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     const SizedBox(
-                      width: 10.0,
+                      width: 2.0,
+                    ),
+                    IconButton(
+                      onPressed: ()
+                      {
+                        showRandomQuote();
+                      },
+                      icon: const Icon(
+                        Icons.refresh,
+                        color: Colors.white,
+                        size: 42.0,
+                        shadows: <Shadow>
+                        [
+                          Shadow(
+                            offset: Offset(3.0, 3.0),
+                            blurRadius: 10.0,
+                            color: Colors.black,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 2.0,
                     ),
                     IconButton(
                       icon: Icon(
